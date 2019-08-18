@@ -1,5 +1,5 @@
 module.exports = {
-    up: (queryInterface, DataTypes) => queryInterface.createTable('Images', {
+    up: (queryInterface, DataTypes) => queryInterface.createTable('images', {
         id: {
             allowNull: false,
             autoIncrement: true,
@@ -17,5 +17,5 @@ module.exports = {
         }
     }),
 
-    down: queryInterface => queryInterface.dropTable('Images')
+    down: queryInterface => queryInterface.dropTable('images')
 };
