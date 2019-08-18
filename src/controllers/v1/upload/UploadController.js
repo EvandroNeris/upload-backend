@@ -11,17 +11,15 @@ module.exports = {
     },
 
     async save(req, res) {
-        console.log(req.file);
+        try {
             const data = {
                 name: req.file.originalname,
                 image: req.file.filename,
                 cloudinar_id: req.file.filename,
             }
             const response = await Upload.create(data);
-            console.log(response)
-            res.status(200).json(response);
-        try {
-            
+
+            res.status(200).json(response);    
         } catch (err) {
             res.status(400).json(err);
         }
