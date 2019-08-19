@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const routes = require('./routes');
+const { cloudinaryConfig } = require('./config/cloudinary');
 
 class AppController {
     constructor() {
@@ -14,6 +15,7 @@ class AppController {
         this.express.use(express.json());
         this.express.use(express.urlencoded({ extended: true }));
         this.express.use(cors());
+        this.express.use('*', cloudinaryConfig)
     }
 
     routes() {
