@@ -1,7 +1,23 @@
 const multer = require('multer');
 const path = require('path');
 const crypto = require('crypto');
+const Datauri = require('datauri');
 
+const storage = multer.memoryStorage();
+
+const multerUploads = multer({ storage }).single('pictures');
+
+const dUri = new Datauri();
+
+const dataUri = req => dUri.format(path.extname(req.file.originalname).toString(), req.file.buffer);
+
+module.exports = { multerUploads, dataUri };
+
+/*
+    *
+    *@LocalStorage
+    *
+    * 
 module.exports = {
     dest: path.resolve(__dirname, '..', '..', 'tmp', 'uploads'),
     storage: multer.diskStorage({
@@ -35,4 +51,4 @@ module.exports = {
             cb(new Error('Invalid file type.'));
         }
     }   
-};
+}; */
